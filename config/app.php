@@ -13,8 +13,9 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'DèClóuv'),
     'logo' => env('APP_LOGO', 'assets/img/favicon/icon.svg'),
+    'style' => env('APP_STYLE', 'font-weight:700'),
 
     /*
     |--------------------------------------------------------------------------

@@ -3,11 +3,13 @@
     <img src="https://i.ibb.co.com/tDLLxh1/logo.png" alt="logo" width="400" style="margin:0 auto">
     </a>
 </p>
+<p align="center">
+    <img src="https://img.shields.io/github/downloads/declouv/laravel-engine/latest/total" alt=""/>
+</p>
 
 # Laravel 11 Admin Dashboard Template
 
 <img src="https://i.ibb.co.com/R42VBrv/image-2.png" alt=""/>
-
 A modern and customizable Laravel 11 admin dashboard template, perfect for building web applications quickly.
 
 ## Features

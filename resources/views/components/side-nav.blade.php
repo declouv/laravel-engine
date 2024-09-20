@@ -2,9 +2,10 @@
     <div class="app-brand demo">
         <a href="{{ route('dashboard-analystics') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
-                <img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name')." logo" }}">
-                </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">{{ config('app.name') }}</span>
+                <img src="{{ asset(config('app.logo')) }}" alt="{{ config('app.name') . ' logo' }}">
+            </span>
+            <span class="app-brand-text demo menu-text ms-2"
+                style="{{ config('app.style') }}">{{ config('app.name') }}</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -18,8 +19,9 @@
         <!-- Dashboards -->
         <x-nav-item-ext :active="request()->is('dashboard-*')">
             <x-slot:title>Dashboard</x-slot:title>
+            <x-slot:badge>5</x-slot:badge>
             <x-slot:icon>home-smile</x-slot:icon>
-            @foreach(['dashboard-analystics', 'dashboard-crm', 'dashboard-ecommerce', 'dashboard-logistics', 'dashboard-academy'] as $routeName)
+            @foreach (['dashboard-analystics', 'dashboard-crm', 'dashboard-ecommerce', 'dashboard-logistics', 'dashboard-academy'] as $routeName)
                 <x-nav-item href="{{ route($routeName) }}" :active="request()->is($routeName)">
                     {{ ucfirst(str_replace('dashboard-', '', $routeName)) }}
                 </x-nav-item>
@@ -98,7 +100,7 @@
         <x-nav-item-ext :active="request()->is('layouts-*')">
             <x-slot:title>Layouts</x-slot:title>
             <x-slot:icon>layout</x-slot:icon>
-            @foreach(['layouts-collapsed-menu','layouts-content-navbar','layouts-content-nav-sidebar','layouts-horizontal','layouts-without-menu','layouts-without-navbar','layouts-fluid','layouts-container','layouts-blank'] as $routeName)
+            @foreach (['layouts-collapsed-menu', 'layouts-content-navbar', 'layouts-content-nav-sidebar', 'layouts-horizontal', 'layouts-without-menu', 'layouts-without-navbar', 'layouts-fluid', 'layouts-container', 'layouts-blank'] as $routeName)
                 <x-nav-item href="{{ route($routeName) }}" :active="request()->is($routeName)" style="text-transform:capitalize">
                     {{ str_replace(['layouts-', '-'], ' ', $routeName) }}
                 </x-nav-item>
@@ -108,7 +110,7 @@
         <x-nav-item-ext :active="request()->is('frontpage-*')">
             <x-slot:title>Front Page</x-slot:title>
             <x-slot:icon>store</x-slot:icon>
-            @foreach(['frontpage-landing','frontpage-pricing','frontpage-payment','frontpage-checkout','frontpage-help'] as $routeName)
+            @foreach (['frontpage-landing', 'frontpage-pricing', 'frontpage-payment', 'frontpage-checkout', 'frontpage-help'] as $routeName)
                 <x-nav-item href="{{ route($routeName) }}" :active="request()->is($routeName)">
                     {{ ucfirst(str_replace('frontpage-', '', $routeName)) }}
                 </x-nav-item>
@@ -118,26 +120,12 @@
         <li class="menu-header small text-uppercase">
             <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>
         </li>
-        {{-- <x-nav-item></x-nav-item> --}}
-        {{-- <x-nav-item href="{{ route('dashboard') }}" :active="request()->is('dashboard') || request()->is('dashboard/*')">Dashboard<x-slot:icon>envelope</x-slot:icon></x-nav-item> --}}
-        <li class="menu-item">
-            <a href="app-chat.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-chat"></i>
-                <div class="text-truncate" data-i18n="Chat">Chat</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="app-calendar.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-calendar"></i>
-                <div class="text-truncate" data-i18n="Calendar">Calendar</div>
-            </a>
-        </li>
-        <li class="menu-item">
-            <a href="app-kanban.html" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-grid"></i>
-                <div class="text-truncate" data-i18n="Kanban">Kanban</div>
-            </a>
-        </li>
+
+        <x-nav-item href="{{ route('email') }}" :active="request()->is('email')">Email<x-slot:icon>envelope</x-slot:icon></x-nav-item>
+        <x-nav-item href="{{ route('chat') }}" :active="request()->is('chat')">Chat<x-slot:icon>chat</x-slot:icon></x-nav-item>
+        <x-nav-item href="{{ route('calendar') }}" :active="request()->is('calendar')">Calendar<x-slot:icon>calendar</x-slot:icon></x-nav-item>
+        <x-nav-item href="{{ route('kanban') }}" :active="request()->is('kanban')">Kanban<x-slot:icon>grid</x-slot:icon></x-nav-item>
+
         <!-- e-commerce-app menu start -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

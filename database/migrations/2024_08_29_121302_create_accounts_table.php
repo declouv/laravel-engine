@@ -16,17 +16,19 @@ return new class extends Migration
             $table->string('name');
             $table->string('username')->unique();
             $table->string('email')->unique();
+            $table->string('password');
             $table->string('role')->nullable();
             $table->string('plan')->nullable();
             $table->date('active_plan')->nullable();
             $table->string('billing')->nullable();
             $table->string('status')->nullable();
-            $table->string('contact');
-            $table->string('country');
+            $table->string('contact')->nullable();
+            $table->string('country')->nullable();
             $table->integer('order')->nullable();
             $table->integer('total_spent')->nullable();
             $table->integer('balance')->nullable();
-            $table->string('address');
+            $table->string('address')->nullable();
+            $table->string('img')->nullable();
             $table->timestamps();
         });
     }

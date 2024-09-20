@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Account;
+use App\Models\Email;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -79,13 +82,16 @@ class PageController extends Controller
         return view('layouts.blank',['title'=>'Blank']);
     }
 
+    public function email() {
+        $users = User::all();
+        $emails = Email::all();
+        return view('email',compact('users','emails'),["title"=>"Email"]);
+    }
+    public function chat() {
+        return view('chat',["title"=>"Chat"]);
+    }
+    public function calendar() {
+        return view('calendar',["title"=>"Calendar"]);
+    }
+
 }
-// Collapsed menu
-// Content navbar
-// Content nav + Sidebar
-// Horizontal
-// Without menu
-// Without navbar
-// Fluid
-// Container
-// Blank

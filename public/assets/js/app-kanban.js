@@ -1,8 +1,11 @@
 !async function() {
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    // Get the route URL from a data attribute or a meta tag
+    const formActionUrl = document.querySelector('meta[name="form-action"]').getAttribute('content');
     let i = document.querySelector(".kanban-update-item-sidebar")
       , e = document.querySelector(".kanban-wrapper")
       , t = document.querySelector(".comment-editor")
-      , a = document.querySelector(".kanban-add-new-board")
+      , a = document.querySelector(".kanban-add-new")
       , n = [].slice.call(document.querySelectorAll(".kanban-add-board-input"))
       , d = document.querySelector(".kanban-add-board-btn")
       , r = document.querySelector("#due-date")
@@ -91,9 +94,11 @@
         buttonClick: function(e, a) {
             let n = document.createElement("form");
             n.setAttribute("class", "new-item-form"),
-            n.innerHTML = '<div class="mb-4"><textarea class="form-control add-new-item" rows="2" placeholder="Add Content" autofocus required></textarea></div><div class="mb-4"><button type="submit" class="btn btn-primary btn-sm me-4">Add</button><button type="button" class="btn btn-label-secondary btn-sm cancel-add-item">Cancel</button></div>',
+            n.setAttribute("method", "POST"),
+            n.setAttribute("action", `${formActionUrl}`),
+            n.innerHTML = `<div class="mb-4"><input type="hidden" name="_token" value="${csrfToken}"><input type="hidden" name="board_id" value="${a}"><textarea class="form-control add-new-item" rows="2" placeholder="Add Content" autofocus required name="title"></textarea></div><div class="mb-4"><button type="submit" class="btn btn-primary btn-sm me-4">Add</button><button type="button" class="btn btn-label-secondary btn-sm cancel-add-item">Cancel</button></div>`,
             v.addForm(a, n),
-            n.addEventListener("submit", function(e) {
+            n.addEventListener("", function(e) {
                 e.preventDefault();
                 var t = [].slice.call(document.querySelectorAll(".kanban-board[data-id=" + a + "] .kanban-item"));
                 v.addElement(a, {

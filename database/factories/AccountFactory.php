@@ -20,7 +20,7 @@ class AccountFactory extends Factory
         'name' => $name = fake()->name(),
         'username' => str_replace(' ', '', strtolower($name)),
         'email' => str_replace(' ', '', strtolower($name)) . '@woila.com',
-        // 'email' => fake()->unique()->safeEmail(),
+        'password' => bcrypt('password'),
         'role' => fake()->randomElement(['admin', 'author', 'editor', 'maintainer', 'subscriber', 'member']),
         'plan' => fake()->randomElement(['basic', 'company', 'enterprise', 'team']),
         'active_plan' => fake()->optional()->dateTimeBetween(now(), '2028-12-31'),
@@ -32,6 +32,7 @@ class AccountFactory extends Factory
         'total_spent' => fake()->optional()->numberBetween(1,200),
         'balance' => fake()->optional()->numberBetween(1,2000),
         'address' => fake()->address(),
+        'img' => rand(1,20).'.png',
         ];
     }
 }
